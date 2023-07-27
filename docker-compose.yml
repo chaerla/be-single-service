@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13.4
+    restart: always
+    container_name: db
+    hostname: db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '8001:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - single-service
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: be-single-service
+    environment:
+      - PORT=${PORT}
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - JWT_TOKEN=${JWT_TOKEN}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+    networks:
+      - single-service
+
+volumes:
+  postgres:
+
+networks:
+  single-service:
