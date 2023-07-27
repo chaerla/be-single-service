@@ -31,6 +31,11 @@ $ yarn run start:dev
 $ docker-compose up -d
 ```
 
+### Go to `/api/docs` to test the API or use the frontend app
+### Login using username: admin password: admin
+![image](https://github.com/chaerla/be-single-service/assets/91037907/76d18e2e-cf69-48bf-b8d1-87b8edce7ec6)
+
+
 ## Design Patterns
 ### Dependency Injection (DI) Pattern
 Services and other classes are defined as providers, are injected into the controllers that need them
