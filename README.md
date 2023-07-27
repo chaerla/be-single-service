@@ -47,6 +47,7 @@ Decorators are used to mark classes as controllers, services, modules, etc., and
 ## Tech Stack
 - NodeJS v18.16.1
 - NestJS framework
+- PostgresSQL
 
 ## Endpoints
 ![image](https://github.com/chaerla/be-single-service/assets/91037907/930ed940-2b39-4a19-8f2c-b5c2d1f677ff)
